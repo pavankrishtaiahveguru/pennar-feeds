@@ -15,6 +15,7 @@ import {
   Fish,
   CheckCircle2,
 } from "lucide-react";
+import { BRAND_TAGLINE } from "@/lib/brand";
 
 const contactDetails = [
   {
@@ -191,7 +192,7 @@ ${form.message}`;
                 <div>
                   <h3 className="font-bold">Pennar Feeds</h3>
                   <p className="text-xs text-blue-200">
-                    Premium Floating Fish Feed
+                    {BRAND_TAGLINE}
                   </p>
                 </div>
               </div>

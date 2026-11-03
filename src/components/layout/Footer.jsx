@@ -14,6 +14,8 @@ import {
 } from "lucide-react";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
 import DevelopedByStaffArc from "../common/DevelopedByStaffArc";
+import { BRAND_TAGLINE } from "@/lib/brand";
+import HomeLink from "@/components/layout/HomeLink";
 
 const quickLinks = [
   { name: "Home", href: "/" },
@@ -74,7 +76,7 @@ const Footer = () => {
           transition={{ duration: 0.5 }}
           className="lg:col-span-1"
         >
-          <Link href="/" className="mb-5 inline-flex items-center gap-3">
+          <HomeLink aria-label="Pennar Feeds home" className="mb-5 inline-flex items-center gap-3">
             <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full bg-white">
               <img
                 src="/logo/logo.png"
@@ -87,10 +89,10 @@ const Footer = () => {
                 PENNAR FEEDS
               </h2>
               <p className="text-xs font-medium tracking-wide text-blue-200">
-                Premium Floating Fish Feed
+                {BRAND_TAGLINE}
               </p>
             </div>
-          </Link>
+          </HomeLink>
 
           <p className="max-w-sm text-sm leading-7 text-blue-100/70">
             Premium quality floating fish feed manufactured using quality raw
@@ -111,16 +113,28 @@ const Footer = () => {
           <ul className="space-y-4">
             {quickLinks.map((link) => (
               <li key={link.name}>
-                <Link
-                  href={link.href}
-                  className="group flex items-center gap-2 text-sm text-blue-100/70 transition-colors hover:text-red-400"
-                >
-                  <ChevronRight
-                    size={15}
-                    className="text-red-500 transition-transform group-hover:translate-x-1"
-                  />
-                  {link.name}
-                </Link>
+                {link.href === "/" ? (
+                  <HomeLink
+                    className="group flex items-center gap-2 text-sm text-blue-100/70 transition-colors hover:text-red-400"
+                  >
+                    <ChevronRight
+                      size={15}
+                      className="text-red-500 transition-transform group-hover:translate-x-1"
+                    />
+                    {link.name}
+                  </HomeLink>
+                ) : (
+                  <Link
+                    href={link.href}
+                    className="group flex items-center gap-2 text-sm text-blue-100/70 transition-colors hover:text-red-400"
+                  >
+                    <ChevronRight
+                      size={15}
+                      className="text-red-500 transition-transform group-hover:translate-x-1"
+                    />
+                    {link.name}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>

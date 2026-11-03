@@ -5,6 +5,8 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ShoppingCart, Phone, ArrowUpRight } from "lucide-react";
 import { useCart } from "@/context/CartContext";
+import { BRAND_TAGLINE } from "@/lib/brand";
+import HomeLink from "@/components/layout/HomeLink";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -28,8 +30,8 @@ const Navbar = () => {
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 lg:px-8">
         {/* Logo */}
         {/* Logo */}
-        <Link href="/" className="flex shrink-0 items-center gap-3">
-          <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full bg-white">
+        <HomeLink aria-label="Pennar Feeds home" className="flex min-w-0 shrink-0 items-center gap-2 sm:gap-3">
+          <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full bg-white sm:h-12 sm:w-12">
             <img
               src="/logo/logo.png"
               alt="Pennar Feeds Logo"
@@ -38,27 +40,37 @@ const Navbar = () => {
           </div>
 
           <div className="flex flex-col">
-            <span className="text-xl font-extrabold tracking-tight text-red-700 sm:text-2xl">
+            <span className="whitespace-nowrap text-[15px] font-extrabold tracking-tight text-red-700 sm:text-xl lg:text-2xl">
               PENNAR FEEDS
             </span>
-            <span className="text-[10px] font-semibold tracking-wide text-blue-950 sm:text-xs">
-              Premium Floating Fish Feed
+            <span className="whitespace-nowrap text-[9px] font-semibold tracking-wide text-blue-950 sm:text-xs">
+              {BRAND_TAGLINE}
             </span>
           </div>
-        </Link>
+        </HomeLink>
 
         {/* Desktop Navigation */}
         <div className="hidden items-center gap-8 lg:flex">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="group relative py-2 text-sm font-semibold text-slate-700 transition-colors duration-300 hover:text-red-600"
-            >
-              {link.name}
-              <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-red-600 transition-all duration-300 group-hover:w-full" />
-            </Link>
-          ))}
+          {navLinks.map((link) =>
+            link.href === "/" ? (
+              <HomeLink
+                key={link.name}
+                className="group relative py-2 text-sm font-semibold text-slate-700 transition-colors duration-300 hover:text-red-600"
+              >
+                {link.name}
+                <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-red-600 transition-all duration-300 group-hover:w-full" />
+              </HomeLink>
+            ) : (
+              <Link
+                key={link.name}
+                href={link.href}
+                className="group relative py-2 text-sm font-semibold text-slate-700 transition-colors duration-300 hover:text-red-600"
+              >
+                {link.name}
+                <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-red-600 transition-all duration-300 group-hover:w-full" />
+              </Link>
+            ),
+          )}
         </div>
 
         {/* Right Actions */}
@@ -137,14 +149,24 @@ const Navbar = () => {
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: index * 0.06 }}
                 >
-                  <Link
-                    href={link.href}
-                    onClick={() => setIsOpen(false)}
-                    className="flex items-center justify-between rounded-lg px-4 py-3 text-sm font-semibold text-slate-700 transition-colors hover:bg-red-50 hover:text-red-600"
-                  >
-                    {link.name}
-                    <ArrowUpRight size={16} />
-                  </Link>
+                  {link.href === "/" ? (
+                    <HomeLink
+                      onClick={() => setIsOpen(false)}
+                      className="flex items-center justify-between rounded-lg px-4 py-3 text-sm font-semibold text-slate-700 transition-colors hover:bg-red-50 hover:text-red-600"
+                    >
+                      {link.name}
+                      <ArrowUpRight size={16} />
+                    </HomeLink>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className="flex items-center justify-between rounded-lg px-4 py-3 text-sm font-semibold text-slate-700 transition-colors hover:bg-red-50 hover:text-red-600"
+                    >
+                      {link.name}
+                      <ArrowUpRight size={16} />
+                    </Link>
+                  )}
                 </motion.div>
               ))}
 

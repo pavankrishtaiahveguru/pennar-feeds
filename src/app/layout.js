@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbr";
 import Footer from "@/components/layout/Footer";
 import AppProviders from "@/components/layout/AppProviders";
+import { BRAND_TAGLINE } from "@/lib/brand";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,10 +15,22 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const metadataTitle = `Pennar Feeds | ${BRAND_TAGLINE}`;
+const metadataDescription = `Pennar Feeds manufactures premium floating fish feed for aquaculture. ${BRAND_TAGLINE} with quality nutrition for healthy fish growth.`;
+
 export const metadata = {
-  title: "Pennar Feeds | Premium Floating Fish Feed",
-  description:
-    "Premium floating fish feed made to support healthy growth and better aquaculture.",
+  title: metadataTitle,
+  description: metadataDescription,
+  openGraph: {
+    title: metadataTitle,
+    description: metadataDescription,
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: metadataTitle,
+    description: metadataDescription,
+  },
 };
 
 export default function RootLayout({ children }) {

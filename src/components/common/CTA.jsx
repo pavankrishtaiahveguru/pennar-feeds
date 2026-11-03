@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Phone, Fish } from "lucide-react";
+import { BRAND_TAGLINE } from "@/lib/brand";
 
 export default function CTA() {
   return (
@@ -24,7 +25,7 @@ export default function CTA() {
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.08] px-4 py-2">
             <Fish size={15} className="text-red-400" />
             <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-blue-100">
-              Grow As Flow With Pennar
+              {BRAND_TAGLINE}
             </span>
           </div>
 

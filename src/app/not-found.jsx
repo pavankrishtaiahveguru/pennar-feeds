@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowUpRight, Fish, Home } from "lucide-react";
+import { BRAND_TAGLINE } from "@/lib/brand";
 
 export default function NotFound() {
   return (
@@ -101,7 +102,7 @@ export default function NotFound() {
           transition={{ duration: 0.7, delay: 0.5 }}
           className="mt-12 text-xs font-semibold tracking-wide text-slate-400"
         >
-          PENNAR FEEDS · Premium Floating Fish Feed
+          PENNAR FEEDS · {BRAND_TAGLINE}
         </motion.p>
       </motion.div>
     </main>

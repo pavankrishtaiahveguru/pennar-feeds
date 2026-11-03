@@ -78,6 +78,7 @@ export default function AboutPage() {
                   src="/images/about-fish-farming.png"
                   alt="Fish farming and aquaculture at a pond"
                   fill
+                  loading="eager"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover transition-transform duration-700 hover:scale-105"
                 />

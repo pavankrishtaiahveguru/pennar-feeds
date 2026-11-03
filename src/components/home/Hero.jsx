@@ -81,7 +81,7 @@ export default function Hero() {
           {/* Heading description */}
           <motion.div variants={itemVariants} className="mt-5">
             <h2 className="text-xl font-extrabold tracking-tight text-blue-950 sm:text-2xl lg:text-[30px]">
-              High Protein Floating Fish Feed
+              GROW AS FLOW
             </h2>
             <p className="mt-2 max-w-lg text-sm font-medium leading-relaxed text-blue-950/75 sm:text-base">
               For Better Growth, Higher Profit & Healthier Fish.
